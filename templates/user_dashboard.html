@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}User Dashboard{% endblock %}
+{% block content %}
+<div class="page-header">
+    <div>
+        <p class="eyebrow">Personal Dashboard</p>
+        <h1>Your Wellbeing Check-ins</h1>
+    </div>
+    <a class="btn" href="{{ url_for('assessment.assessment') }}">New Check-in</a>
+</div>
+
+<div class="card">
+    <h2>Recent Assessments</h2>
+    {% if assessments %}
+    <div class="table-wrap">
+    <table>
+        <tr><th>Date</th><th>Distress Score</th><th>Risk</th></tr>
+        {% for a in assessments %}
+        <tr>
+            <td>{{ a.created_at }}</td>
+            <td>{{ a.distress_score }}%</td>
+            <td><span class="badge">{{ a.risk_level }}</span></td>
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
+    {% else %}
+        <p>No check-ins yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,56 @@
+.assistant-shell {
+    max-width: 900px;
+    margin: 0 auto;
+}
+.assistant-header { margin-bottom: 20px; }
+.chat-window {
+    height: 55vh;
+    min-height: 380px;
+    overflow-y: auto;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    padding: 20px;
+}
+.bubble {
+    max-width: 82%;
+    padding: 12px 15px;
+    margin: 10px 0;
+    border-radius: 15px;
+    line-height: 1.55;
+    white-space: pre-wrap;
+}
+.assistant-bubble { background: #e7f5ec; margin-right: auto; }
+.user-bubble { background: #e8eefc; margin-left: auto; }
+.voice-row, .composer, .tools {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 14px;
+}
+.voice-row select, .composer input {
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 11px;
+}
+.voice-row select { flex: 0 0 150px; }
+.composer input { flex: 1; }
+.mic {
+    width: 52px; height: 52px;
+    border: 0; border-radius: 50%;
+    font-size: 23px; cursor: pointer;
+}
+.mic.recording {
+    box-shadow: 0 0 0 7px rgba(220,38,38,.12);
+    transform: scale(1.05);
+}
+.btn { border: 0; border-radius: 10px; padding: 11px 17px; cursor: pointer; }
+.secondary { background: #edf2f7; }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+#voiceStatus { color: #64748b; font-size: 14px; }
+.disclaimer { color: #64748b; font-size: 13px; margin-top: 18px; }
+@media (max-width: 650px) {
+    .voice-row, .composer, .tools { flex-wrap: wrap; }
+    .voice-row select, .composer input { width: 100%; flex-basis: 100%; }
+    .bubble { max-width: 92%; }
+}

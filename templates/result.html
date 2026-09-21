@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Assessment Result{% endblock %}
+{% block content %}
+<div class="page-header">
+    <div>
+        <p class="eyebrow">Assessment Result</p>
+        <h1>{{ assessment.risk_level }}</h1>
+    </div>
+</div>
+
+<div class="grid two">
+    <div class="card">
+        <h2>Distress Indicator</h2>
+        <div class="score">{{ assessment.distress_score }}%</div>
+        <p>This is a prototype risk indicator, not a medical diagnosis.</p>
+    </div>
+
+    <div class="card">
+        <h2>AI Summary</h2>
+        <p>{{ assessment.ai_summary }}</p>
+    </div>
+</div>
+
+<div class="card">
+    <h2>Your Inputs</h2>
+    <ul>
+        <li>Mood: {{ assessment.mood_score }}/10</li>
+        <li>Stress: {{ assessment.stress_score }}/10</li>
+        <li>Sleep: {{ assessment.sleep_score }}/10</li>
+        <li>Activity: {{ assessment.activity_score }}/10</li>
+    </ul>
+</div>
+{% endblock %}

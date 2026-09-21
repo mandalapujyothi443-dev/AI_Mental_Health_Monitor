@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}MindWatch AI{% endblock %}
+{% block content %}
+<section class="hero">
+    <div>
+        <p class="eyebrow">AI + Machine Learning</p>
+        <h1>Dynamic Wellbeing Monitoring</h1>
+        <p>
+            A prototype that analyzes voluntary check-ins over time and
+            highlights changing distress patterns for appropriate human review.
+        </p>
+        <a class="btn" href="{{ url_for('auth.login') }}">Get Started</a>
+    </div>
+</section>
+
+<div class="grid three">
+    <div class="card"><h3>Check-ins</h3><p>Record mood, stress, sleep and activity indicators.</p></div>
+    <div class="card"><h3>AI Analysis</h3><p>Combine ML risk estimation with optional text analysis.</p></div>
+    <div class="card"><h3>Trend Monitoring</h3><p>Review changes over multiple assessments.</p></div>
+</div>
+{% endblock %}

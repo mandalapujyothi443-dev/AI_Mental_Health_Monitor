@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}History{% endblock %}
+{% block head %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endblock %}
+{% block content %}
+<h1>Assessment History</h1>
+<div class="card">
+    <canvas id="trendChart"></canvas>
+</div>
+
+<div class="card">
+<table>
+<tr><th>Date</th><th>Score</th><th>Risk</th></tr>
+{% for a in assessments %}
+<tr>
+<td>{{ a.created_at }}</td>
+<td>{{ a.distress_score }}%</td>
+<td>{{ a.risk_level }}</td>
+</tr>
+{% endfor %}
+</table>
+</div>
+
+<script>
+const labels = {{ assessments|map(attribute='created_at')|list|tojson }};
+const values = {{ assessments|map(attribute='distress_score')|list|tojson }};
+</script>
+<script src="{{ url_for('static', filename='js/charts.js') }}"></script>
+{% endblock %}

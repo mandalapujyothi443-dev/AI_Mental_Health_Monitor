@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Wellbeing Check-in{% endblock %}
+{% block content %}
+<div class="form-card wide">
+<h2>Voluntary Wellbeing Check-in</h2>
+<p class="muted">
+Use the 1–10 scale. Higher mood, sleep and activity scores indicate better
+current functioning; higher stress indicates more stress.
+</p>
+<form method="post">
+    <label>Mood (1–10)</label>
+    <input type="number" name="mood_score" min="1" max="10" required>
+
+    <label>Stress (1–10)</label>
+    <input type="number" name="stress_score" min="1" max="10" required>
+
+    <label>Sleep quality (1–10)</label>
+    <input type="number" name="sleep_score" min="1" max="10" required>
+
+    <label>Activity/functioning (1–10)</label>
+    <input type="number" name="activity_score" min="1" max="10" required>
+
+    <label>Optional text check-in</label>
+    <textarea name="text_input" rows="5"
+      placeholder="Write a few words about how you are feeling today."></textarea>
+
+    <div class="notice">
+        This prototype provides an early-warning indicator only. It does not
+        diagnose a mental-health condition.
+    </div>
+
+    <button class="btn" type="submit">Analyze Check-in</button>
+</form>
+</div>
+{% endblock %}

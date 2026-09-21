@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}AI Chat & Voice Assistant{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/assistant.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="assistant-shell">
+    <div class="assistant-header">
+        <div>
+            <p class="eyebrow">AI WELLBEING SUPPORT</p>
+            <h1>AI Chat & Voice Assistant</h1>
+            <p class="muted">Talk or type. The assistant provides general wellbeing support, not a diagnosis.</p>
+        </div>
+    </div>
+
+    <div id="chat" class="chat-window" aria-live="polite">
+        <div class="bubble assistant-bubble">
+            Hi {{ session.get('name') }}. I'm here to listen. You can type a question or use the microphone.
+        </div>
+    </div>
+
+    <div class="voice-row">
+        <select id="language" aria-label="Voice language">
+            <option value="">Auto detect</option>
+            <option value="en">English</option>
+            <option value="te">Telugu</option>
+            <option value="hi">Hindi</option>
+            <option value="ta">Tamil</option>
+            <option value="kn">Kannada</option>
+            <option value="ml">Malayalam</option>
+        </select>
+        <button id="mic" class="mic" type="button" title="Start voice assistant">🎤</button>
+        <span id="voiceStatus">Click the microphone to speak</span>
+    </div>
+
+    <div class="composer">
+        <input id="message" type="text" maxlength="4000" placeholder="Type how you are feeling or ask a wellbeing question...">
+        <button id="send" class="btn" type="button">Send</button>
+    </div>
+
+    <div class="tools">
+        <button id="speak" class="btn secondary" type="button" disabled>🔊 Speak last answer</button>
+        <button id="clear" class="btn secondary" type="button">Clear chat</button>
+    </div>
+
+    <p class="disclaimer">
+        This is a wellbeing-support feature, not a medical diagnosis or emergency service.
+        If you are in immediate danger, contact local emergency services or a crisis service and a trusted person.
+    </p>
+</div>
+
+<script src="{{ url_for('static', filename='js/assistant.js') }}"></script>
+{% endblock %}

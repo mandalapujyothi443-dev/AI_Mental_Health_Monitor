@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Wellbeing Monitor{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block head %}{% endblock %}
+</head>
+<body>
+<nav class="navbar">
+    <a class="brand" href="{{ url_for('user.index') }}">MindWatch AI</a>
+    <div>
+        {% if session.get('user_id') %}
+            <span class="welcome">Hi, {{ session.get('name') }}</span>
+            {% if session.get('role') == 'counselor' %}
+                <a href="{{ url_for('dashboard.counselor_dashboard') }}">Dashboard</a>
+                <a href="{{ url_for('alert.alerts') }}">Alerts</a>
+            {% else %}
+                <a href="{{ url_for('user.dashboard') }}">Dashboard</a>
+                <a href="{{ url_for('assessment.assessment') }}">Check-in</a>
+                <a href="{{ url_for('assessment.history') }}">History</a>
+                <a href="{{ url_for('assistant.page') }}">AI Assistant</a>
+            {% endif %}
+            <a href="{{ url_for('auth.logout') }}">Logout</a>
+        {% else %}
+            <a href="{{ url_for('auth.login') }}">Login</a>
+            <a href="{{ url_for('auth.register') }}">Register</a>
+        {% endif %}
+    </div>
+</nav>
+
+<main class="container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% for category, message in messages %}
+            <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+</main>
+
+<footer>
+    <p>Prototype only — not a medical diagnosis or emergency service.</p>
+</footer>
+</body>
+</html>

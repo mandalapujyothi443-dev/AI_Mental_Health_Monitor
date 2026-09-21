@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Alerts{% endblock %}
+{% block content %}
+<h1>Support Alerts</h1>
+<div class="card">
+{% if alerts %}
+<table>
+<tr><th>User</th><th>Risk</th><th>Message</th><th>Status</th><th>Action</th></tr>
+{% for alert in alerts %}
+<tr>
+<td>{{ alert.name }}</td>
+<td>{{ alert.risk_level }}</td>
+<td>{{ alert.message }}</td>
+<td>{{ alert.status }}</td>
+<td>
+{% if alert.status != 'Reviewed' %}
+<form method="post" action="{{ url_for('alert.resolve', alert_id=alert.id) }}">
+<button class="small-btn" type="submit">Mark Reviewed</button>
+</form>
+{% else %}
+Reviewed
+{% endif %}
+</td>
+</tr>
+{% endfor %}
+</table>
+{% else %}
+<p>No alerts yet.</p>
+{% endif %}
+</div>
+{% endblock %}
